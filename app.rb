@@ -16,7 +16,7 @@ class App < Sinatra::Base
   end
 
   def title
-    'Summer Instititue Starter App'
+    'Ritavs Blender App'
   end
 
   get '/examples' do
@@ -27,5 +27,18 @@ class App < Sinatra::Base
     logger.info('requsting the index')
     @flash = session.delete(:flash) || { info: 'Welcome to Summer Institute!' }
     erb(:index)
+  end
+end
+
+# in app.rb
+class App
+  get '/projects/new' do
+    erb(:new_project)
+  end
+end
+
+class App
+  post '/projects/new' do
+    redirect(url("/projects/new"))
   end
 end
